@@ -1,0 +1,47 @@
+<?php
+/*
+ Template Name: Contact Page
+ *
+*/
+?>
+
+<?php get_header(); ?>
+<main class="content" id="content" itemscope itemtype="http://schema.org/WebPageElement">
+	<?php get_template_part( 'template-parts/loop/content', 'banner' );  ?>
+	<!--- Main Content -->
+	<div class="content__main">
+		<div class="auto-container">
+
+				<div class="row">
+					 <div class="<?php echo ( get_field('no_sidebar') ) ? 'col-md-12' : 'col-md-8'; ?>">
+					 	
+					 	<?php while ( have_posts() ) : the_post(); ?>
+
+								<?php get_template_part( 'template-parts/loop/content', 'page' ); ?>
+
+						<?php endwhile; ?>
+
+					 </div>
+				 <?php if( !get_field('no_sidebar') ) : ?>
+					 <div class="col-md-4">
+					 	<aside id="sidebar">
+
+						 		<?php if( is_active_sidebar('sidebar3') ) : ?>
+			                          <div class="widget-area">
+
+			                            <?php dynamic_sidebar('sidebar3')  ?>
+
+			                          </div>
+			                  	<?php  endif; ?>
+
+					 	</aside>
+					 </div>
+				<?php endif; ?>	 
+				</div>
+		</div>
+	</div>
+	<!-- .Main Content -->
+
+</main>
+	
+<?php get_footer(); ?>
